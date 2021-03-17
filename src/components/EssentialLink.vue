@@ -1,9 +1,9 @@
 <template>
+<div>
   <q-item
     clickable
     tag="a"
-    target="_blank"
-    :href="link"
+    :to="link"
   >
     <q-item-section
       v-if="icon"
@@ -19,6 +19,8 @@
       </q-item-label>
     </q-item-section>
   </q-item>
+  <q-separator />
+</div>
 </template>
 
 <script>
