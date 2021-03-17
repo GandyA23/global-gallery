@@ -18,7 +18,6 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-      
       'axios',
     ],
 
@@ -92,7 +91,7 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify']
     },
 
     // animations: 'all', // --- includes all animations
@@ -176,7 +175,19 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'global-gallery'
+        appId: 'global-gallery',
+        // transpile: false,
+        port: 80,
+        proxy: {
+          // proxy all requests starting with /api to jsonplaceholder
+          '/api': {
+            target: 'http://localhost:3000/api',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': ''
+            }
+          }
+        },
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
